@@ -23,13 +23,13 @@
 			<form>
 				<div class="form-group">
 					<label for="formSignUpEmail">Email address</label>
-					<input type="email" class="form-control" id="formSignUpEmail" placeholder="Enter your email address">
+					<input type="email" class="form-control" id="formSignUpEmail" placeholder="Enter your email address" required> 
 				</div>
 				<div class="form-group">
 					<label for="formSignUpPassword">Password</label>
-					<input type="password" class="form-control" id="formSignUpPassword" placeholder="Enter your password">
+					<input type="password" class="form-control" id="formSignUpPassword" placeholder="Enter your password" required>
 
-					<input type="password" class="form-control mt-4" id="formSignUpPasswordConf" placeholder="Confirm your password">
+					<input type="password" class="form-control mt-4" id="formSignUpPasswordConf" placeholder="Confirm your password" required>
 				</div>
 				<button type="submit" class="btn btn-primary">Submit</button>
 			</form>
