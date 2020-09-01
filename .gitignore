@@ -4,4 +4,4 @@ docker-compose.yml
 Dockerfile
 .DS_Store
 docker
-public-html/phpMyAdmin
+public-html/phpmyadmin
