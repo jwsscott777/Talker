@@ -44,9 +44,9 @@
 		</div>
 	</div>
 </div>
-<!--regis link   -->
+<!--regis links   -->
      <!-- https://regex101.com/r/slZODS/1-->
-      
+     <!-- https://regex101.com/r/slZODS/2-->
 
     <!-- Optional Javascript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
