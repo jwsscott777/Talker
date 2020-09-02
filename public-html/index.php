@@ -21,7 +21,7 @@
 
 	<hr><br>
           
-          <?php if ($_SESSION["msgid"]!=="811") { ?>
+          <?php if ($_SESSION["msgid"]=="811") { ?>
 	<div class="row">
 		<div class="col-12">
 			<div class="alert alert-success" role="alert">Everything is valid, we can store the record to the database</div>
@@ -34,7 +34,7 @@
                                         }?>
           
           
-           <?php if ($_SESSION["msgid"]!=="803") { ?>
+           <?php if ($_SESSION["msgid"]=="803") { ?>
 	<div class="row">
 		<div class="col-12">
 			<div class="alert alert-danger" role="alert">Passwords don't match</div>
