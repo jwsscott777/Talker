@@ -1,3 +1,6 @@
+<?php session_start(); ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -18,15 +21,30 @@
 
 	<hr><br>
           
-          <?php
-	if ($_GET['msgid']!="") {
-		echo "<div class='row'>";
-		echo "<div class='col-12'>";
-		echo "<div class='alert alert-success' role='alert'>Everything is valid, we can store the record to the database</div>";
-		echo "</div>";
-		echo "</div>";
-	}
-?>
+          <?php if ($_SESSION["msgid"]!=="811") { ?>
+	<div class="row">
+		<div class="col-12">
+			<div class="alert alert-success" role="alert">Everything is valid, we can store the record to the database</div>
+		</div>
+	</div>
+    
+     <?php
+        
+        $_SESSION["msgid"] = "";
+                                        }?>
+          
+          
+           <?php if ($_SESSION["msgid"]!=="803") { ?>
+	<div class="row">
+		<div class="col-12">
+			<div class="alert alert-danger" role="alert">Passwords don't match</div>
+		</div>
+	</div>
+    
+     <?php
+        
+        $_SESSION["msgid"] = "";
+                                        }?>
 
 	<div class="row">
 		<div class="col-6">
