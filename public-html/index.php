@@ -17,6 +17,16 @@
 	</div>
 
 	<hr><br>
+          
+          <?php
+	if ($_GET['msgid']!="") {
+		echo "<div class='row'>";
+		echo "<div class='col-12'>";
+		echo "<div class='alert alert-success' role='alert'>Everything is valid, we can store the record to the database</div>";
+		echo "</div>";
+		echo "</div>";
+	}
+?>
 
 	<div class="row">
 		<div class="col-6">
