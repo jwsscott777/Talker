@@ -5,3 +5,4 @@ Dockerfile
 .DS_Store
 docker
 public-html/phpmyadmin
+public-html/PHPMailer
