@@ -14,14 +14,17 @@ function phpShowFeedback($feedback_id) {
            $feedback_type="danger";
            $feedback_text="Password must be between 8 and 16 characters long, with at least one uppercase and lowercase character, one number and one special character (@, *, $ or #).";
            break;
- 
             
             
+          case "803":
+		 $feedback_type="danger";
+		 $feedback_text="Passwords don't match";
+		 break;
             
             
-		case "803":
+		case "804":
 		$feedback_type="danger";
-		$feedback_text="Passwords don't match";
+		$feedback_text="This email is already used";
 		break;
 
 		case "811":
@@ -47,6 +50,18 @@ function phpModifyDB($db_query, $db_data) {
     $statement = $connection->prepare($db_query);
     $statement->execute($db_data);
 }
+
+// Get the information from the database
+function phpFetchDB($db_query, $db_data) {
+    global $connection;
+
+    $statement = $connection->prepare($db_query);
+    $statement->execute($db_data);
+
+    //setting the fetch mode and returning the result
+    return $statement->fetch(PDO::FETCH_ASSOC);
+}
+
 
 
 
