@@ -1,5 +1,8 @@
 <?php
 require ("db-conn.inc.php");
+require ("PHPMailer/PHPMailer.php");
+require ("PHPMailer/Exception.php");
+require ("PHPMailer/SMTP.php");
 
 // Place directly inside Bootstrap container to keep the right structure of Bootstrap document
 function phpShowFeedback($feedback_id) {
