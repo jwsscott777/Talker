@@ -1,4 +1,4 @@
-<?php session_start(); ?>
+<?php session_start(); require('system.ctrl.php'); ?>
 
 
 <!DOCTYPE html>
@@ -21,30 +21,13 @@
 
 	<hr><br>
           
-          <?php if ($_SESSION["msgid"]=="811") { ?>
-	<div class="row">
-		<div class="col-12">
-			<div class="alert alert-success" role="alert">Everything is valid, we can store the record to the database</div>
-		</div>
-	</div>
-    
-     <?php
-        
-        $_SESSION["msgid"] = "";
-                                        }?>
-          
-          
-           <?php if ($_SESSION["msgid"]=="803") { ?>
-	<div class="row">
-		<div class="col-12">
-			<div class="alert alert-danger" role="alert">Passwords don't match</div>
-		</div>
-	</div>
-    
-     <?php
-        
-        $_SESSION["msgid"] = "";
-                                        }?>
+    <?php
+          if (isset($_SESSION["msgid"]) && $_SESSION["msgid"]!=""){
+              echo (phpShowFeedback($_SESSION["msgid"]));
+              $_SESSION["msgid"]="";
+          }
+    ?>
+     
 
 	<div class="row">
 		<div class="col-6">
@@ -57,7 +40,7 @@
 					<label for="formSignUpPassword">Password</label>
 					<input type="password" class="form-control" id="formSignUpPassword" name="formSignUpPassword" placeholder="Enter your password" required pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@*$#]).{8,16}" onkeyup="jsSignUpValidatePassword()">
 
-					<input type="password" class="form-control mt-4" id="formSignUpPasswordConf" name="formSignUpPasswordConf" placeholder="Confirm your password" required pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@*$#]).{8,16}" onkeyup="jsSignUpValidatePassword()">>
+					<input type="password" class="form-control mt-4" id="formSignUpPasswordConf" name="formSignUpPasswordConf" placeholder="Confirm your password" required pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@*$#]).{8,16}" onkeyup="jsSignUpValidatePassword()">
 				</div>
                 <p id="password_comparison"></p>
 				<button type="submit" class="btn btn-primary">Submit</button>
