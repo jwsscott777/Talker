@@ -1,6 +1,6 @@
 <?php session_start(); require('system.ctrl.php'); ?><?php
 
-phpSendEmail('tlmsols50@gmail.com', 'Hello There', 'This is just a test email');
+
     
 ?>
 
