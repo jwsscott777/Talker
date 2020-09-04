@@ -1,6 +1,6 @@
 <?php session_start(); require('system.ctrl.php'); ?><?php
 
-
+//phpSendEmail();
     
 ?>
 
@@ -36,7 +36,7 @@
 
 	<div class="row">
 		<div class="col-6">
-			<form name="formSignup" action="signup.ctrl.php" method="post">
+			<form name="formSignup" action="signup.ctrl.php" method="post" novalidate>
 				<div class="form-group">
 					<label for="formSignUpEmail">Email address</label>
 					<input type="email" class="form-control" id="formSignUpEmail" name="formSignUpEmail" placeholder="Enter your email address" required pattern="^[\w]{1,}[\w.+-]{0,}@[\w-]{2,}([.][a-zA-Z]{2,}|[.][\w-]{2,}[.][a-zA-Z]{2,})$"> 
