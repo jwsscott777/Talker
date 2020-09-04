@@ -54,6 +54,7 @@ function phpShowFeedback($feedback_id) {
 		$feedback_type="success";
 		$feedback_text="Your account has been activated, you can sign in.";
 		break;
+            
             case "812":
 		$feedback_type="warning";
 		$feedback_text="Check your email and verify your email address!";
