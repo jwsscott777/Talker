@@ -11,7 +11,7 @@ use PHPMailer\PHPMailer\Exception;
 function phpShowSystemFeedback($feedback_id) {
 	switch ($feedback_id) {
             
-           /*case "801":
+          /* case "801":
            $feedback_type="danger";
            $feedback_text="This is not a valid email address";
            break;
@@ -35,7 +35,7 @@ function phpShowSystemFeedback($feedback_id) {
             
           
             
-          /*  case "805":
+           /* case "805":
 		$feedback_type="danger";
 		$feedback_text="This email is not registered";
 		break;*/
@@ -162,6 +162,21 @@ if (!$mail->send()) {
     $_SESSION["msgid"] = "812";
 }
 }
+
+
+
+function phpShowEmailInputValue($user_email) {
+    if ($user_email != "") {
+        $content="value='" . $user_email . "'";
+    }else{
+        $content="";
+    }
+
+    return $content;
+}
+
+
+
 
 
 

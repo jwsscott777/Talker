@@ -47,14 +47,14 @@
 			<form name="formSignup" action="signup.ctrl.php" method="post" novalidate>
 				<div class="form-group">
 					<label for="formSignUpEmail">Email address</label>
-					<input type="email" class="form-control <?php echo (phpShowInputFeedback($_SESSION['msgid'])[0]); ?>" id="formSignUpEmail" name="formSignUpEmail" placeholder="Enter your email address" required pattern="^[\w]{1,}[\w.+-]{0,}@[\w-]{2,}([.][a-zA-Z]{2,}|[.][\w-]{2,}[.][a-zA-Z]{2,})$"> 
+					<input type="email" <?php echo (phpShowEmailInputValue($_SESSION['formSignUpEmail']));?> class="form-control <?php echo (phpShowInputFeedback($_SESSION['msgid'])[0]); ?>" id="formSignUpEmail" name="formSignUpEmail" placeholder="Enter your email address" required pattern="^[\w]{1,}[\w.+-]{0,}@[\w-]{2,}([.][a-zA-Z]{2,}|[.][\w-]{2,}[.][a-zA-Z]{2,})$"> 
                     <?php if ($_SESSION['msdid'] == "801") { ?>
                     <div class="invalid-feedback"><?php echo (phpShowInputFeedback($_SESSION['msgid'])[1]); ?></div>
                     <?php } ?>
 				</div>
 				<div class="form-group">
 					<label for="formSignUpPassword">Password</label>
-					<input type="password" class="form-control <?php echo (phpShowInputFeedback($_SESSION['msgid'])[0]); ?>"  id="formSignUpPassword" name="formSignUpPassword" placeholder="Enter your password" required pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@*$#]).{8,16}" onkeyup="jsSignUpValidatePassword()"> <?php if ($_SESSION['msdid'] == "802") { ?>
+					<input type="password" class="form-control <?php if ($_SESSION['msgid']!='801' && $_SESSION['msgid']!=''){ echo 'is-valid';} else { echo (phpShowInputFeedback($_SESSION['msgid'])[0]); } ?>"  id="formSignUpPassword" name="formSignUpPassword" placeholder="Enter your password" required pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@*$#]).{8,16}" onkeyup="jsSignUpValidatePassword()"> <?php if ($_SESSION['msdid'] == "802") { ?>
                     <div class="invalid-feedback"><?php echo (phpShowInputFeedback($_SESSION['msgid'])[1]); ?></div>
                     <?php } ?>
 
@@ -75,18 +75,21 @@
 	</div>
 </div>
 
-      <?php $_SESSION["msgid"]=""; ?>
+      <?php $_SESSION["msgid"]=""; $_SESSION["formSignUpEmail"]=""?>
       
       <script>
       var jsSignUpPassword = document.getElementById("formSignUpPassword");
       var jsSignUpPasswordConf = document.getElementById("formSignUpPasswordConf");
+    var jsPasswordRegexPattern = /(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@*$#]).{8,16}/;
 
       function jsSignUpValidatePassword(){
-        if(jsSignUpPassword.value != jsSignUpPasswordConf.value) {
-          jsSignUpPasswordConf.setCustomValidity("Passwords don't match!");
+        if(jsPasswordRegexPattern.test(jsSignUpPassword.value)) {
+            document.getElementById("password_comparison").innerHTML = "div class='alert alert-danger' role='alert'>Pattern not matched!</div";
+        
+      }else if(jsSignUpPassword.value != jsSignUpPasswordConf.value) {
+          
 		 document.getElementById("password_comparison").innerHTML = "<div class='alert alert-danger' role='alert'>Passwords don't match!</div>";
         } else {
-          jsSignUpPasswordConf.setCustomValidity('');
 		 document.getElementById("password_comparison").innerHTML = "";
         }
       }
