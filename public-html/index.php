@@ -29,7 +29,7 @@
     <?php
           if (isset($_SESSION["msgid"]) && $_SESSION["msgid"]!=""){
               echo (phpShowFeedback($_SESSION["msgid"]));
-              $_SESSION["msgid"]="";
+              
           }
     ?>
      
@@ -39,7 +39,10 @@
 			<form name="formSignup" action="signup.ctrl.php" method="post" novalidate>
 				<div class="form-group">
 					<label for="formSignUpEmail">Email address</label>
-					<input type="email" class="form-control" id="formSignUpEmail" name="formSignUpEmail" placeholder="Enter your email address" required pattern="^[\w]{1,}[\w.+-]{0,}@[\w-]{2,}([.][a-zA-Z]{2,}|[.][\w-]{2,}[.][a-zA-Z]{2,})$"> 
+					<input type="email" class="form-control <?php echo (phpShowInputFeedback($_SESSION['msgid'])[0]); ?>" id="formSignUpEmail" name="formSignUpEmail" placeholder="Enter your email address" required pattern="^[\w]{1,}[\w.+-]{0,}@[\w-]{2,}([.][a-zA-Z]{2,}|[.][\w-]{2,}[.][a-zA-Z]{2,})$"> 
+                    <?php if ($_SESSION['msdid'] == "801") { ?>
+                    <div class="invalid-feedback"><?php echo (phpShowInputFeedback($_SESSION['msgid'])[1]); ?></div>
+                    <?php } ?>
 				</div>
 				<div class="form-group">
 					<label for="formSignUpPassword">Password</label>
@@ -62,7 +65,7 @@
 	</div>
 </div>
 
-      
+      <?php $_SESSION["msgid"]=""; ?>
       
       <script>
       var jsSignUpPassword = document.getElementById("formSignUpPassword");
