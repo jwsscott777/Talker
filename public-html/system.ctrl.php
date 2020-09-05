@@ -8,10 +8,10 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
 // Place directly inside Bootstrap container to keep the right structure of Bootstrap document
-function phpShowFeedback($feedback_id) {
+function phpShowSystemFeedback($feedback_id) {
 	switch ($feedback_id) {
             
-           case "801":
+           /*case "801":
            $feedback_type="danger";
            $feedback_text="This is not a valid email address";
            break;
@@ -25,7 +25,7 @@ function phpShowFeedback($feedback_id) {
           case "803":
 		 $feedback_type="danger";
 		 $feedback_text="Passwords don't match";
-		 break;
+		 break;*/
             
             
 		case "804":
@@ -35,10 +35,10 @@ function phpShowFeedback($feedback_id) {
             
           
             
-            case "805":
+          /*  case "805":
 		$feedback_type="danger";
 		$feedback_text="This email is not registered";
-		break;
+		break;*/
             
             case "806":
 		$feedback_type="danger";
@@ -62,13 +62,10 @@ function phpShowFeedback($feedback_id) {
             
             
 
-		default:
-		$feedback_type="danger";
-		$feedback_text="Unspecified error or warning";
-		break;
+		
     }
-
-	return '<div class="row"><div class="col-12"><div class="alert alert-' . $feedback_type . '" role="alert">' . $feedback_text . '</div></div></div>';
+return [$feedback_type, $feedback_text];
+	//return '<div class="row"><div class="col-12"><div class="alert alert-' . //$feedback_type . '" role="alert">' . $feedback_text . '</div></div></div>';
 }
 
 
@@ -101,7 +98,7 @@ function phpShowInputFeedback($feedback_id) {
 		break;
     }
 
-	return [$feedback_type, $feedback_text];
+	//return [$feedback_type, $feedback_text];
 }
 
 

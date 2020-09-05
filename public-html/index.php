@@ -26,12 +26,20 @@
 
 	<hr><br>
           
-    <?php
-          if (isset($_SESSION["msgid"]) && $_SESSION["msgid"]!=""){
-              echo (phpShowFeedback($_SESSION["msgid"]));
-              
-          }
-    ?>
+   <!-- SYSTEM-WIDE FEEDBACK -->
+<?php if (isset($_SESSION["msgid"]) && $_SESSION["msgid"]!="" && phpShowSystemFeedback($_SESSION["msgid"])[0]!="") { ?>
+
+	<div class="row">
+		<div class="col-12">
+			<div class="alert alert-<?php echo (phpShowSystemFeedback($_SESSION['msgid'])[0]); ?>" role="alert">
+				<?php echo (phpShowSystemFeedback($_SESSION['msgid'])[1]); ?>
+			</div>
+		</div>
+	</div>
+
+<?php } ?>
+<!-- SYSTEM-WIDE FEEDBACK -->
+
      
 
 	<div class="row">
@@ -46,12 +54,14 @@
 				</div>
 				<div class="form-group">
 					<label for="formSignUpPassword">Password</label>
-					<input type="password" class="form-control" id="formSignUpPassword" name="formSignUpPassword" placeholder="Enter your password" required pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@*$#]).{8,16}" onkeyup="jsSignUpValidatePassword()">
+					<input type="password" class="form-control <?php echo (phpShowInputFeedback($_SESSION['msgid'])[0]); ?>"  id="formSignUpPassword" name="formSignUpPassword" placeholder="Enter your password" required pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@*$#]).{8,16}" onkeyup="jsSignUpValidatePassword()"> <?php if ($_SESSION['msdid'] == "802") { ?>
+                    <div class="invalid-feedback"><?php echo (phpShowInputFeedback($_SESSION['msgid'])[1]); ?></div>
+                    <?php } ?>
 
 					<input type="password" class="form-control mt-4" id="formSignUpPasswordConf" name="formSignUpPasswordConf" placeholder="Confirm your password" required pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@*$#]).{8,16}" onkeyup="jsSignUpValidatePassword()">
 				</div>
                 <p id="password_comparison"></p>
-				<button type="submit" class="btn btn-primary">Submit</button>
+				<button type="submit" class="btn btn-success">Sign Up</button>
 			</form>
 		</div>
 
